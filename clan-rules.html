@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord - Clan Rules</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #000;
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      cursor: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    h1, .rules-container, #cursor {
+      position: relative;
+      z-index: 2;
+    }
+
+    .rules-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 90%;
+      max-width: 700px;
+      background: rgba(0,255,255,0.05);
+      border: 1px solid #0ff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .rules-container ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    /* Back button */
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 0.5rem 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+      box-shadow: 0 0 10px #0ff;
+      z-index: 10001;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .back-button:hover {
+      background: #0ff;
+      color: #000;
+    }
+
+    #cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0ff;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+  <button class="back-button" onclick="history.back()">&#8592; Back</button>
+
+  <div id="particles-js"></div>
+
+  <h1>Landlord Rules</h1>
+
+  <div class="rules-container">
+    <ul>
+      <li>Respect all clan members. Toxicity will not be tolerated.</li>
+      <li>No stealing from clan bases or teammates under any circumstances.</li>
+      <li>Be active. If you’re offline for more than 5 days without notice, you may be kicked.</li>
+      <li>Communicate in voice chat during raids and PvP.</li>
+      <li>Follow leadership calls during raids, even if you disagree.</li>
+      <li>Share loot fairly — don’t hoard high-tier gear without reason.</li>
+      <li>No cheating, scripting, or using exploits. Instant ban and report to server admin.</li>
+      <li>Always replace what you take from base loot rooms when possible (farm, craft, donate).</li>
+      <li>Defend the base when under raid — drop what you’re doing and help out.</li>
+      <li>Have fun and represent the clan with pride!</li>
+    </ul>
+  </div>
+
+  <div id="cursor"></div>
+
+  <!-- particles.js library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <script>
+    // Initialize particles.js
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#0ff" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" },
+          "polygon": { "nb_sides": 5 }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": { "enable": false }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": { "enable": false }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#0ff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 3,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+          "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
+          "repulse": { "distance": 200, "duration": 0.4 },
+          "push": { "particles_nb": 4 },
+          "remove": { "particles_nb": 2 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+  </script>
+</body>
+</html>
